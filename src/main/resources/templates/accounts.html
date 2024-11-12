@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Accounts</title>
+</head>
+<body>
+<div class="table-container">
+    <h2>Client Accounts</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Numero Compte</th>
+            <th>Client Name</th>
+            <th>Type Compte</th>
+            <th>Date Creation</th>
+            <th>Solde</th>
+            <!--<th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="account : ${accounts}">
+            <td th:text="${account.numCompte}">Account Number</td>
+            <td th:text="${account.client.nom}">Client Name</td>
+            <td th:text="${account.class.simpleName}">Account Type</td>
+            <td th:text="${#dates.format(account.dateCreation, 'yyyy-MM-dd')}">Creation Date</td>
+            <td th:text="${account.solde}">Balance</td>
+            <!--<td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger" th:data-id="${account.numCompte}">Delete</button>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" onclick="openAccountModal()">Add New Account</button>
+</div>
+
+<div class="modal-overlay" id="accountModalOverlay" style="display: none;">
+    <div class="modal">
+        <button class="close-btn" onclick="closeAccountModal()">×</button>
+        <h2>Add New Account</h2>
+        <form id="accountForm">
+            <div class="form-group">
+                <label for="code">Client Code:</label>
+                <input type="text" id="code" name="code" required>
+            </div>
+            <div class="form-group">
+                <label for="accountType">Account Type:</label>
+                <select id="accountType" name="accountType" required>
+                    <option value="CC">CC</option>
+                    <option value="CE">CE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="balance">Solde:</label>
+                <input type="number" id="balance" name="solde" required>
+            </div>
+            <button type="button" class="btn btn-success" onclick="submitAccountForm()">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/accounts.js}"></script>
+</body>
+</html>

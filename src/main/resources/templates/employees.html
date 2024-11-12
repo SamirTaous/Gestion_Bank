@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees</title>
+</head>
+<body>
+<div class="table-container">
+    <h2>Employees</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Superior ID</th>
+<!--            <th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody id="employeeTableBody">
+        <tr th:each="employe : ${employes}">
+            <td th:text="${employe.codeEmploye}"></td>
+            <td th:text="${employe.nomEmploye}"></td>
+            <td th:text="${employe.superieur != null ? employe.superieur.codeEmploye : 'N/A'}"></td>
+            <!--<td th:text="${employe.groupes.isEmpty() ? 'N/A' : employe.groupes[0].nomGroupe}"></td>-->
+            <!--<td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger delete-btn" th:data-id="${employe.codeEmploye}">Delete</button>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" id="addEmployeeBtn" onclick="openModal()">Add New Employee</button>
+</div>
+
+<!-- Modal for Adding New Employee -->
+
+<div class="modal-overlay" id="modalOverlay" style="display: none;">
+    <div class="modal">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <h2>Add New Employee</h2>
+        <form id="employeeForm">
+            <div class="form-group">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="nomEmploye" required>
+            </div>
+            <div class="form-group">
+                <label for="superiorId">Superior ID:</label>
+                <input type="text" id="superiorId" name="superieur">
+            </div>
+            <!--<div class="form-group">
+                <label for="groupId">Group:</label>
+                <select id="groupId" name="groupes">
+                    <option value="">Select Group</option>
+                    <option th:each="group : ${groupes}" th:value="${group.numGroupe}" th:text="${group.nomGroupe}"></option>
+                </select>
+            </div>-->
+            <button type="button" class="btn btn-success" onclick="submitEmployeeForm()">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<script th:src="@{/js/employees.js}"></script>
+</body>
+</html>

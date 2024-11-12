@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-MD6ZAnH4I0SKQ85yW4fG6mqPUheYdXbTqW5ED3iZ2mJECG69SOxACDYOeP6p+R5g" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{css/login.css}">
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-card">
+        <img th:src="@{images/img.png}" alt="Bank Logo" class="logo">
+        <h3>Login to your account</h3>
+        <form class="login-form" action="/" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <p class="login-error-message" th:text="${message}"></p>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <div class="footer">
+            <p>&copy; 2024 Bank Management System</p>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-ojbNj3n5Hov4rFl5buCUb0zX54w7O92KNspH8S5tZi6ZlYbC7K0f4Jk5y5qWb9V6"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgGQNYc5J4j68q3R0E6i5s6s9gFVn6CkE1A/4xr4dNTl5f2FuD8"
+        crossorigin="anonymous"></script>
+</body>
+</html>

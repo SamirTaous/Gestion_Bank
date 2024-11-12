@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div class="table-container">
+    <h2>Transaction Report</h2>
+
+    <!-- Filter Section -->
+    <div class="filters">
+        <label for="report-type">Select Report Type:</label>
+        <select id="report-type">
+            <option value="financial">Financial Reports</option>
+            <option value="transactions">Transaction Reports</option>
+            <option value="employee">Employee Performance</option>
+        </select>
+
+        <label for="date-range">Select Date Range:</label>
+        <input type="date" id="start-date">
+        <input type="date" id="end-date">
+
+        <button class="btn btn-primary">Generate Report</button>
+    </div>
+
+    <!-- Table Displaying Report -->
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1001</td>
+            <td>$1,000</td>
+            <td>2024-11-01</td>
+            <td>Completed</td>
+            <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>$500</td>
+            <td>2024-11-02</td>
+            <td>Pending</td>
+            <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>$300</td>
+            <td>2024-11-03</td>
+            <td>Failed</td>
+            <td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-success">Export Report</button>
+</div>
+</body>
+</html>

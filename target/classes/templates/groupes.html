@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groups</title>
+</head>
+<body>
+<div class="table-container">
+    <h2>Groups</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Group ID</th>
+            <th>Group Name</th>
+            <th>Number of Employees</th>
+            <!--<th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody id="groupTableBody">
+        <tr th:each="groupe : ${groupes}">
+            <td th:text="${groupe.numGroupe}">Group ID</td>
+            <td th:text="${groupe.nomGroupe}">Group Name</td>
+            <td th:text="${groupe.employes.size()}">Number of Employees</td>
+            <!--<td>
+                <button class="btn btn-sm btn-primary">Edit</button>
+                <button class="btn btn-sm btn-danger delete-btn" th:data-id="${groupe.numGroupe}">Delete</button>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" id="addGroupBtn" onclick="openGroupModal()">Add New Group</button>
+</div>
+
+<!-- Modal for Adding New Group -->
+<div class="modal-overlay" id="groupModalOverlay" style="display: none;">
+    <div class="modal">
+        <button class="close-btn" onclick="closeGroupModal()">×</button>
+        <h2>Add New Group</h2>
+        <form id="groupForm">
+            <div class="form-group">
+                <label for="groupName">Group Name:</label>
+                <input type="text" id="groupName" name="nomGroupe" required>
+            </div>
+            <button type="button" class="btn btn-success" onclick="submitGroupForm()">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/groups.js}"></script>
+</body>
+</html>

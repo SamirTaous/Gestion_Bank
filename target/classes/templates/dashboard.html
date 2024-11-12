@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Dashboard Container -->
+<div class="table-container">
+    <h2>Dashboard</h2>
+    <div class="row">
+        <!-- Employee Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Total Employees</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${employeeCount}">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client Accounts Count Card -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Total Client Accounts</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${clientCount}">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

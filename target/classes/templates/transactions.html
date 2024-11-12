@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+</head>
+<body>
+<div class="table-container">
+    <h2>Transactions</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Account ID</th>
+            <th>Employee Name</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Date</th>
+            <!--<th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="operation : ${operations}">
+            <td th:text="${operation.numOperation}">Transaction ID</td>
+            <td th:text="${operation.compte.numCompte}">Account ID</td>
+            <td th:text="${operation.employe.nomEmploye}">Employee Name</td>
+            <td th:text="${operation.montant}">Amount</td>
+            <td th:text="${operation.class.simpleName}">Type</td>
+            <td th:text="${#dates.format(operation.dateOperation, 'yyyy-MM-dd')}">Date</td>
+            <!--<td>
+                <button class="btn btn-sm btn-primary">View</button>
+                <button class="btn btn-sm btn-danger">Delete</button>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-success" onclick="openVersementModal()">Add Versement</button>
+    <button class="btn btn-success" onclick="openRetraitModal()">Add Retrait</button>
+</div>
+
+<!-- Versement Modal -->
+<div class="modal-overlay" id="versementModalOverlay" style="display: none;">
+    <div class="modal">
+        <button class="close-btn" onclick="closeVersementModal()">×</button>
+        <h2>Effectuer un Versement</h2>
+        <form id="versementForm">
+            <div class="form-group">
+                <label for="versementAccountId">Compte ID:</label>
+                <input type="text" id="versementAccountId" name="compteId" required>
+            </div>
+            <div class="form-group">
+                <label for="versementAmount">Montant:</label>
+                <input type="number" id="versementAmount" name="montant" required>
+            </div>
+            <div class="form-group">
+                <label for="versementEmployeeId">Employé ID:</label>
+                <input type="text" id="versementEmployeeId" name="employeId" required>
+            </div>
+            <button type="button" class="btn btn-success" onclick="submitVersementForm()">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Retrait Modal -->
+<div class="modal-overlay" id="retraitModalOverlay" style="display: none;">
+    <div class="modal">
+        <button class="close-btn" onclick="closeRetraitModal()">×</button>
+        <h2>Effectuer un Retrait</h2>
+        <form id="retraitForm">
+            <div class="form-group">
+                <label for="retraitAccountId">Compte ID:</label>
+                <input type="text" id="retraitAccountId" name="compteId" required>
+            </div>
+            <div class="form-group">
+                <label for="retraitAmount">Montant:</label>
+                <input type="number" id="retraitAmount" name="montant" required>
+            </div>
+            <div class="form-group">
+                <label for="retraitEmployeeId">Employé ID:</label>
+                <input type="text" id="retraitEmployeeId" name="employeId" required>
+            </div>
+            <button type="button" class="btn btn-success" onclick="submitRetraitForm()">Submit</button>
+        </form>
+    </div>
+</div>
+
+
+<script th:src="@{/js/transactions.js}"></script>
+</body>
+</html>
